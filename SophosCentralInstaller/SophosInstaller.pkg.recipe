@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Comment</key>
+	<string>Created with Recipe Robot v1.0.5 (https://github.com/homebysix/recipe-robot)</string>
+	<key>Description</key>
+	<string>Downloads the latest version of Sophos Installer and creates a package.</string>
+	<key>Identifier</key>
+	<string>com.github.macjustice.pkg.SophosInstaller</string>
+	<key>Input</key>
+	<dict>
+		<key>BUNDLE_ID</key>
+		<string>com.sophos.macendpoint.Sophos-Installer</string>
+		<key>NAME</key>
+		<string>Sophos Installer</string>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>1.0.0</string>
+	<key>ParentRecipe</key>
+	<string>com.github.macjustice.download.SophosInstaller</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Processor</key>
+			<string>PkgRootCreator</string>
+			<key>Arguments</key>
+				<dict>
+					<key>pkgroot</key>
+					<string>%RECIPE_CACHE_DIR%/pkg_root</string>
+					<key>pkgdirs</key>
+					<dict>
+						<key>tmp</key>
+						<string>755</string>
+					</dict>
+				</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>Copier</string>
+			<key>Arguments</key>
+			<dict>
+				<key>source_path</key>
+				<string>%RECIPE_CACHE_DIR%/unpack/</string>
+				<key>destination_path</key>
+				<string>%pkgroot%/tmp/</string>
+				<key>overwrite</key>
+				<true/>
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>PkgCreator</string>
+			<key>Arguments</key>
+			<dict>
+				<key>pkgname</key>
+				<string>%NAME%-%version%</string>
+				<key>pkg_request</key>
+				<dict>
+					<key>pkgdir</key>
+					<string>%RECIPE_CACHE_DIR%</string>
+					<key>id</key>
+					<string>com.dropbox.corp.sophosinstaller</string>
+					<key>options</key>
+					<string>purge_ds_store</string>
+					<key>scripts</key>
+					<string>Sophos_Scripts</string>
+					<key>chown</key>
+					<array>
+						<dict>
+							<key>path</key>
+							<string>tmp</string>
+							<key>user</key>
+							<string>root</string>
+							<key>group</key>
+							<string>admin</string>
+						</dict>
+					</array>
+				</dict>
+			</dict>
+		</dict>
+	</array>
+</dict>
+</plist>
