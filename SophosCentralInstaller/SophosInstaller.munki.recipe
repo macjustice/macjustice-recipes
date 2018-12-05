@@ -31,7 +31,7 @@
 	<key>MinimumVersion</key>
 	<string>1.0.0</string>
 	<key>ParentRecipe</key>
-	<string>com.github.macjustice.download.SophosInstaller</string>
+	<string>com.github.macjustice.pkg.SophosInstaller</string>
 	<key>Process</key>
 	<array>
 		<dict>
