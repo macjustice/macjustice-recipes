@@ -1,0 +1,12 @@
+#!/bin/bash
+
+kill $(ps ax | grep 'Sophos' | awk '{print $1}')
+rm -rf /Applications/Sophos\ Anti-Virus.app/
+rm -rf /Library/Sophos\ Anti-Virus/
+rm /Library/LaunchAgents/com.sophos.uiserver.plist
+rm /Library/LaunchDaemons/com.sophos.common.servicemanager.plist
+rm /Library/Preferences/com.sophos.*
+rm -rf /Library/Frameworks/SUMScanKit.framework
+rm -rf /Library/Frameworks/SAVI.framework
+rm -rf /Library/Frameworks/SophosGenericsCommon.framework
+rm -rf /Library/Frameworks/SophosGenericsCore.framework
