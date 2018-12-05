@@ -13,7 +13,7 @@
 		<key>BUNDLE_ID</key>
 		<string>com.sophos.macendpoint.Sophos-Installer</string>
 		<key>NAME</key>
-		<string>Sophos Installer</string>
+		<string>SophosInstaller</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>1.0.0</string>
