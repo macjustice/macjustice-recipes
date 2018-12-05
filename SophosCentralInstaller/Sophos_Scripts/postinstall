@@ -1,10 +1,8 @@
 #!/bin/sh
 
-INSTALLER_PATH="/tmp/Sophos\ Installer.app/Contents/MacOS/Sophos\ Installer"
-
-if [ -e $INSTALLER_PATH ]
+if [ -e /tmp/Sophos\ Installer.app/Contents/MacOS/Sophos\ Installer ]
 then
-    "$INSTALLER_PATH" --install
+    /tmp/Sophos\ Installer.app/Contents/MacOS/Sophos\ Installer --install
 else
     echo "Expected Sophos installer app at /tmp/Sophos\ Installer.app, not found"
     exit 1
