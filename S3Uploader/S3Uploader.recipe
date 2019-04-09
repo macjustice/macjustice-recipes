@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Description</key>
+    <string>This is an example of a recipe that can be used by another
+recipe outside of this directory or repo, to refer to
+a processor in this directory.
+
+Instead of setting the 'Processor' key to a processor name
+only, we separate the recipe identifier and the processor
+name with a slash:
+..assuming that this recipe is in one of AutoPkg's search dirs.
+    </string>
+    <key>Identifier</key>
+    <string>com.github.macjustice.recipes.S3Uploader</string>
+    <key>Input</key>
+    <dict>
+        <key>pkg_path</key>
+        <string>/Users/macj/Downloads/AutoPKG-1.9.dmg</string>
+    </dict>
+    <key>MinimumVersion</key>
+    <string>0.4.0</string>
+    <key>Process</key>
+    <array/>
+</dict>
+</plist>
