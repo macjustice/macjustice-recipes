@@ -1,0 +1,12 @@
+- repo: https://github.com/homebysix/pre-commit-macadmin
+  rev: v1.0.5
+  hooks: 
+    - id: check-autopkg-recipes
+- repo: https://github.com/pre-commit/pre-commit-hooks
+  rev: v2.1.0
+  hooks:
+    - id: detect-aws-credentials
+- repo: https://github.com/pre-commit/mirrors-autopep8
+  rev: v1.4.3
+  hooks:
+    - id: autopep8
