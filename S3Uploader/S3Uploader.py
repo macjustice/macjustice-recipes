@@ -71,12 +71,15 @@ class S3Uploader(Processor):
                   '   https://boto3.amazonaws.com/v1/documentation/api/latest/guide/configuration.html')
             exit(1)
 
-        # See if pkg is already in S3
+        # See if pkg is already in S3, then upload
         munki_bucket_contents = [x.key for x in munki_bucket.objects.all()]
-        if package in munki_bucket_contents:
+        if package not in munki_bucket_contents:
+            munki_bucket.upload_file(Filename=package, Key='AutoDMG-1.9.dmg')
+        else:
             raise Exception(
                 'A file with the same name already exists in this bucket.')
-        else:
-            munki_bucket.upload_file(Filename=package, Key='AutoDMG-1.9.dmg')
-
         # Return output variables
+
+if __name__ == "__main__":
+    PROCESSOR = S3Uploader()
+    PROCESSOR.execute_shell()
