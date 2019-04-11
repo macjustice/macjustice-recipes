@@ -16,6 +16,7 @@
 # limitations under the License.
 
 import os
+import boto3
 from autopkglib import Processor, ProcessorError
 
 
