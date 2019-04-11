@@ -13,12 +13,9 @@ name with a slash:
 ..assuming that this recipe is in one of AutoPkg's search dirs.
     </string>
     <key>Identifier</key>
-    <string>com.github.macjustice.recipes.S3Uploader</string>
+    <string>com.github.macjustice.macjustice-recipes.S3Uploader</string>
     <key>Input</key>
-    <dict>
-        <key>pkg_path</key>
-        <string>/Users/macj/Downloads/AutoPKG-1.9.dmg</string>
-    </dict>
+    <dict/>
     <key>MinimumVersion</key>
     <string>0.4.0</string>
     <key>Process</key>
