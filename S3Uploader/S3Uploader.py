@@ -80,6 +80,7 @@ class S3Uploader(Processor):
                 'A file with the same name already exists in this bucket.')
         # Return output variables
 
+
 if __name__ == "__main__":
     PROCESSOR = S3Uploader()
     PROCESSOR.execute_shell()
