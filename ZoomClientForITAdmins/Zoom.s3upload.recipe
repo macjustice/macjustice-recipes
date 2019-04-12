@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Downloads the latest version of Zoom and uploads to S3.</string>
+	<key>Identifier</key>
+	<string>com.github.macjustice.s3upload.Zoom</string>
+	<key>Input</key>
+	<dict>
+		<key>bucket_name</key>
+		<string>munki-sandbox</string>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>1.0.0</string>
+	<key>ParentRecipe</key>
+	<string>com.github.macjustice.download.zoom</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>pkg_path</key>
+				<string>%pathname%</string>
+				<key>bucket_name</key>
+				<string>%bucket_name%</string>
+			</dict>
+			<key>Processor</key>
+			<string>S3Uploader</string>
+		</dict>
+	</array>
+</dict>
+</plist>
