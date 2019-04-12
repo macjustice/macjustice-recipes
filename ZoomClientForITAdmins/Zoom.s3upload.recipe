@@ -26,7 +26,7 @@
 				<string>%bucket_name%</string>
 			</dict>
 			<key>Processor</key>
-			<string>com.github.macjustice.macjustice-recipes/S3Uploader</string>
+			<string>com.github.macjustice.macjustice-recipes.S3Uploader</string>
 		</dict>
 	</array>
 </dict>
