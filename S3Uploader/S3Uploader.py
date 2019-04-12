@@ -26,11 +26,7 @@ __all__ = ["S3Uploader"]
 
 class S3Uploader(Processor):
 
-    """Processor base class.
-
-      Processors accept a property list as input, process its contents, and
-      returns a new or updated property list that can be processed further.
-      """
+    """This processor uploads packages to a designated S3 bucket. Boto3 must be installed, and valid AWS credentials need to be available (Environment variables, .aws config file). See here for boto3 configuration info: https://boto3.amazonaws.com/v1/documentation/api/latest/guide/configuration.html"""
 
     description = __doc__
     input_variables = {
@@ -79,7 +75,7 @@ class S3Uploader(Processor):
         # See if pkg is already in S3, then upload
         munki_bucket_contents = [x.key for x in munki_bucket.objects.all()]
         if package not in munki_bucket_contents:
-            munki_bucket.upload_file(Filename=package, Key='AutoDMG-1.9.dmg')
+            munki_bucket.upload_file(Filename=package, Key=package)
         else:
             raise Exception(
                 'A file with the same name already exists in this bucket.')
