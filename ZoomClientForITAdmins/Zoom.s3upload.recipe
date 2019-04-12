@@ -14,7 +14,7 @@
 	<key>MinimumVersion</key>
 	<string>1.0.0</string>
 	<key>ParentRecipe</key>
-	<string>com.github.macjustice.macjustice-recipes.download.zoom</string>
+	<string>com.github.macjustice.macjustice-recipes.download.Zoom</string>
 	<key>Process</key>
 	<array>
 		<dict>
