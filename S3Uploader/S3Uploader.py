@@ -38,6 +38,10 @@ class S3Uploader(Processor):
             "required": True,
             "description": "Path to a pkg or dmg to upload."
         },
+        "bucket_name": {
+            "required": True,
+            "description": "Name of the S3 bucket to upload to."
+        },
     }
 
     output_variables = {
