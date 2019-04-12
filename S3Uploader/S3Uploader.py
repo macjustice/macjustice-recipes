@@ -52,8 +52,7 @@ class S3Uploader(Processor):
     def main(self):
 
         package = self.env["pkg_path"]
-
-        print(package)
+        filename = self.env["filename"]
 
         # Check if Boto3 installed
         try:
@@ -75,7 +74,7 @@ class S3Uploader(Processor):
         # See if pkg is already in S3, then upload
         munki_bucket_contents = [x.key for x in munki_bucket.objects.all()]
         if package not in munki_bucket_contents:
-            munki_bucket.upload_file(Filename=package, Key=package)
+            munki_bucket.upload_file(Filename=package, Key=filename)
         else:
             raise Exception(
                 'A file with the same name already exists in this bucket.')
