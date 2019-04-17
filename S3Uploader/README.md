@@ -1,3 +1,2 @@
 # s3uploader
-
-A description of this package.
+S3Uploader was a hack week project to try making an autopkg processor that uploads a package to S3 at the end of an autopkg run. As I got further into the process I decdide that this workflow isn't really ideal for my environment, and so only wrote enough for it to kind of work. Definitely not ready for prod, but if you see something you like go ahead and take it.
