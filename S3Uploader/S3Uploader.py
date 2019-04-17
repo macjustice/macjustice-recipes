@@ -52,7 +52,7 @@ class S3Uploader(Processor):
     def main(self):
 
         package = self.env["pkg_path"]
-        filename = self.env["filename"]
+        filename = os.path.basename(package)
 
         # Check if Boto3 installed
         try:
