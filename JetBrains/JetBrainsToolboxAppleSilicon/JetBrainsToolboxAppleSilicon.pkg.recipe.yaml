@@ -1,0 +1,11 @@
+Comment: Created with Recipe Robot v2.2.0 (https://github.com/homebysix/recipe-robot)
+Description: Downloads the latest version of JetBrains Toolbox and creates a package.
+Identifier: com.github.macjustice.pkg.JetBrainsToolboxAppleSilicon
+ParentRecipe: com.github.macjustice.download.JetBrainsToolboxAppleSilicon
+MinimumVersion: 1.0.0
+
+Input:
+  NAME: JetBrains Toolbox
+
+Process:
+- Processor: AppPkgCreator
