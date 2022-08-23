@@ -1,0 +1,21 @@
+Description: Downloads the latest verison of Adobe Creative Cloud Installer and imports it into Munki.
+Identifier: com.github.macjustice.munki.AdobeCreativeCloudInstaller
+Input:
+  NAME: AdobeCreativeCloud
+  MUNKI_REPO_SUBDIR: "apps/%NAME%"
+  pkginfo:
+    catalogs:
+      - testing
+    description: Download and install apps, share files, find fonts and Adobe Stock assets, set preferences, and more — all from the Creative Cloud desktop app.
+    developer: Adobe
+    display_name: Adobe Creative Cloud
+    minimum_os_version: "10.15"
+    name: '%NAME'
+    unattended_install: true
+MinimumVersion: '2.3'
+ParentRecipe: com.github.rtrouton.pkg.AdobeCreativeCloudInstaller
+Process:
+- Arguments:
+    pkg_path: '%PKG%'
+    repo_subdirectory: '%MUNKI_REPO_SUBDIR'
+  Processor: MunkiImporter
