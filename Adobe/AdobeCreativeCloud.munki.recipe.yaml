@@ -16,6 +16,6 @@ MinimumVersion: '2.3'
 ParentRecipe: com.github.rtrouton.pkg.AdobeCreativeCloudInstaller
 Process:
 - Arguments:
-    pkg_path: '%PKG%'
+    pkg_path: '%pkg_path%'
     repo_subdirectory: '%MUNKI_REPO_SUBDIR'
   Processor: MunkiImporter
