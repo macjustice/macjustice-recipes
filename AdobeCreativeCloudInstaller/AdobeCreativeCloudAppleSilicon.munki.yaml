@@ -2,7 +2,7 @@ Description: Downloads the latest verison of Adobe Creative Cloud Installer and 
 Identifier: com.github.macjustice.munki.AdobeCreativeCloudAppleSilicon
 Input:
   NAME: AdobeCreativeCloudAppleSilicon
-    MUNKI_REPO_SUBDIR: 'apps/%NAME%'
+  MUNKI_REPO_SUBDIR: 'apps/%NAME%'
   pkginfo:
     catalogs:
       - testing
