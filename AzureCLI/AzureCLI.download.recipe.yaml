@@ -20,8 +20,7 @@ Process:
     github_repo: Azure/azure-cli
     asset_regex: azure-cli-[\d.]+-macos-%ARCH%\.tar\.gz
 
-# Release tags look like "azure-cli-2.91.0"
-- Processor: com.github.homebysix.VersionSplitter/VersionSplitter
+- Processor: com.github.homebysix.VersionSplitter/VersionSplitter  # tags look like "azure-cli-2.91.0"
   Arguments:
     split_on: '-'
     index: 2

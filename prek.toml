@@ -1,0 +1,24 @@
+[[repos]]
+repo = "builtin"
+hooks = [
+  { id = "check-added-large-files" },
+  { id = "check-case-conflict" },
+  { id = "check-merge-conflict" },
+  { id = "check-symlinks" },
+  { id = "check-yaml" },
+  { id = "detect-private-key" },
+  { id = "end-of-file-fixer" },
+  { id = "mixed-line-ending", args = ["--fix=lf"] },
+  { id = "trailing-whitespace", args = ["--markdown-linebreak-ext=md"] },
+]
+
+[[repos]]
+repo = "https://github.com/homebysix/pre-commit-macadmin"
+rev = "v1.25.1"
+hooks = [
+  { id = "check-plists" },
+  { id = "check-autopkg-recipes", args = ["--recipe-prefix=com.github.macjustice.", "--strict"] },
+  { id = "format-autopkg-yaml-recipes" },
+  { id = "forbid-autopkg-overrides" },
+  { id = "forbid-autopkg-trust-info" },
+]
