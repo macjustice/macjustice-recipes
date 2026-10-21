@@ -1,0 +1,32 @@
+Description: |
+  Downloads the latest Azure CLI macOS tarball, creates a package, and imports
+  it into a Munki repo.
+
+  Python is not included. The az launcher requires a Python 3.14 interpreter,
+  supplied via the AZ_PYTHON environment variable. Consider adding your
+  Python 3.14 item to "requires" in an override.
+Identifier: com.github.macjustice.munki.AzureCLI
+ParentRecipe: com.github.macjustice.pkg.AzureCLI
+MinimumVersion: 2.3.0
+
+Input:
+  NAME: AzureCLI
+  MUNKI_REPO_SUBDIR: apps/%NAME%
+  MUNKI_CATEGORY: Developer Tools
+  pkginfo:
+    catalogs:
+    - testing
+    category: '%MUNKI_CATEGORY%'
+    description: The Azure command-line interface (az) for managing Azure resources.
+    developer: Microsoft
+    display_name: Azure CLI
+    name: '%NAME%'
+    supported_architectures:
+    - '%ARCH%'
+    unattended_install: true
+
+Process:
+- Processor: MunkiImporter
+  Arguments:
+    pkg_path: '%pkg_path%'
+    repo_subdirectory: '%MUNKI_REPO_SUBDIR%'

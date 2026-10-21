@@ -1,0 +1,47 @@
+Description: |
+  Downloads the latest Azure CLI macOS tarball and creates a package that
+  installs it to /usr/local/azure-cli, with a symlink at /usr/local/bin/az.
+
+  Python is not included. The az launcher requires a Python 3.14 interpreter,
+  supplied via the AZ_PYTHON environment variable.
+Identifier: com.github.macjustice.pkg.AzureCLI
+ParentRecipe: com.github.macjustice.download.AzureCLI
+MinimumVersion: 2.3.0
+
+Input:
+  NAME: AzureCLI
+  PKG_ID: com.github.macjustice.pkg.azure-cli
+
+Process:
+- Processor: PkgRootCreator
+  Arguments:
+    pkgroot: '%RECIPE_CACHE_DIR%/pkgroot'
+    pkgdirs:
+      usr: '0755'
+      usr/local: '0755'
+      usr/local/bin: '0755'
+
+- Processor: Unarchiver
+  Arguments:
+    archive_path: '%pathname%'
+    destination_path: '%pkgroot%/usr/local/azure-cli'
+    purge_destination: true
+
+- Processor: Symlinker
+  Arguments:
+    source_path: /usr/local/azure-cli/bin/az
+    destination_path: '%pkgroot%/usr/local/bin/az'
+    overwrite: true
+
+- Processor: PkgCreator
+  Arguments:
+    pkg_request:
+      pkgname: '%NAME%-%ARCH%-%version%'
+      pkgdir: '%RECIPE_CACHE_DIR%'
+      id: '%PKG_ID%'
+      version: '%version%'
+      options: purge_ds_store
+      chown:
+      - path: usr
+        user: root
+        group: wheel

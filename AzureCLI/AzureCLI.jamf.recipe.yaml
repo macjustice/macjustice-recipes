@@ -1,0 +1,24 @@
+Description: |
+  Downloads the latest Azure CLI macOS tarball, creates a package, and uploads
+  it to Jamf Pro. Does not create policies or groups.
+
+  Python is not included. The az launcher requires a Python 3.14 interpreter,
+  supplied via the AZ_PYTHON environment variable.
+
+  Requires the grahampugh/jamf-upload repo for the JamfUploader processors.
+Identifier: com.github.macjustice.jamf.AzureCLI
+ParentRecipe: com.github.macjustice.pkg.AzureCLI
+MinimumVersion: 2.3.0
+
+Input:
+  NAME: AzureCLI
+  CATEGORY: Developer Tools
+
+Process:
+- Processor: com.github.grahampugh.jamf-upload.processors/JamfCategoryUploader
+  Arguments:
+    category_name: '%CATEGORY%'
+
+- Processor: com.github.grahampugh.jamf-upload.processors/JamfPackageUploader
+  Arguments:
+    pkg_category: '%CATEGORY%'

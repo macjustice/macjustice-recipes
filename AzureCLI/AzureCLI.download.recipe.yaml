@@ -1,0 +1,44 @@
+Description: |
+  Downloads the latest Azure CLI macOS tarball from GitHub releases.
+
+  Set ARCH to "arm64" (Apple Silicon) or "x86_64" (Intel).
+
+  Note: the tarball does not bundle Python. The az launcher requires a
+  Python 3.14 interpreter, supplied via the AZ_PYTHON environment variable.
+
+  Requires the homebysix-recipes repo for the VersionSplitter processor.
+Identifier: com.github.macjustice.download.AzureCLI
+MinimumVersion: 2.3.0
+
+Input:
+  NAME: AzureCLI
+  ARCH: arm64
+
+Process:
+- Processor: GitHubReleasesInfoProvider
+  Arguments:
+    github_repo: Azure/azure-cli
+    asset_regex: azure-cli-[\d.]+-macos-%ARCH%\.tar\.gz
+
+# Release tags look like "azure-cli-2.91.0"
+- Processor: com.github.homebysix.VersionSplitter/VersionSplitter
+  Arguments:
+    split_on: '-'
+    index: 2
+
+- Processor: URLDownloader
+  Arguments:
+    filename: azure-cli-%version%-macos-%ARCH%.tar.gz
+
+- Processor: EndOfCheckPhase
+
+- Processor: Unarchiver
+  Arguments:
+    archive_path: '%pathname%'
+    destination_path: '%RECIPE_CACHE_DIR%/unpack'
+    purge_destination: true
+
+- Processor: CodeSignatureVerifier
+  Arguments:
+    input_path: '%RECIPE_CACHE_DIR%/unpack/libexec/lib/python3.*/site-packages/cryptography/hazmat/bindings/_rust.abi3.so'
+    requirement: identifier "_rust.abi3" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = UBF8T346G9
