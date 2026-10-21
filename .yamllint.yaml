@@ -1,0 +1,14 @@
+---
+# Match the style enforced by format-autopkg-yaml-recipes.
+extends: default
+
+rules:
+  comments:
+    min-spaces-from-content: 1
+  document-start: disable
+  indentation:
+    indent-sequences: consistent
+  # Code signature requirements are long single-line strings.
+  line-length: disable
+  truthy:
+    check-keys: false

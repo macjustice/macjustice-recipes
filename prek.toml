@@ -1,13 +1,18 @@
+minimum_prek_version = "0.5.0"
+
 [[repos]]
 repo = "builtin"
 hooks = [
-  { id = "check-added-large-files" },
+  { id = "check-added-large-files", args = ["--maxkb=100"] },
   { id = "check-case-conflict" },
+  { id = "check-executables-have-shebangs" },
   { id = "check-merge-conflict" },
+  { id = "check-shebang-scripts-are-executable" },
   { id = "check-symlinks" },
   { id = "check-yaml" },
   { id = "detect-private-key" },
   { id = "end-of-file-fixer" },
+  { id = "fix-byte-order-marker" },
   { id = "mixed-line-ending", args = ["--fix=lf"] },
   { id = "trailing-whitespace", args = ["--markdown-linebreak-ext=md"] },
 ]
@@ -17,8 +22,18 @@ repo = "https://github.com/homebysix/pre-commit-macadmin"
 rev = "v1.25.1"
 hooks = [
   { id = "check-plists" },
-  { id = "check-autopkg-recipes", args = ["--recipe-prefix=com.github.macjustice.", "--strict"] },
+  { id = "check-autopkg-recipes", args = ["--recipe-prefix=com.github.macjustice.", "--strict", "--"] },
   { id = "format-autopkg-yaml-recipes" },
   { id = "forbid-autopkg-overrides" },
   { id = "forbid-autopkg-trust-info" },
 ]
+
+[[repos]]
+repo = "https://github.com/adrienverge/yamllint"
+rev = "v1.38.0"
+hooks = [{ id = "yamllint", args = ["--strict"] }]
+
+[[repos]]
+repo = "https://github.com/rhysd/actionlint"
+rev = "v1.7.12"
+hooks = [{ id = "actionlint" }]
